@@ -1,1 +1,716 @@
-for color
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg: #08090e;
+    --surface: #11131b;
+    --surface-light: #191c28;
+    --text: #f4f5fa;
+    --muted: #9297a8;
+    --red: #ff355e;
+    --blue: #4d8dff;
+    --border: rgba(255, 255, 255, 0.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+::selection {
+    background: var(--red);
+    color: white;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 76px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: rgba(8, 9, 14, 0.88);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar nav a {
+    color: var(--muted);
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: white;
+}
+
+.nav-button {
+    border: 1px solid rgba(255, 53, 94, 0.6);
+    padding: 10px 16px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: var(--red);
+    box-shadow: 0 0 20px rgba(255, 53, 94, 0.35);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 590px;
+    padding: 100px 9%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background:
+        radial-gradient(ellipse at 80% 50%, rgba(66, 35, 91, 0.2), transparent 35%),
+        radial-gradient(ellipse at 95% 20%, rgba(255, 53, 94, 0.11), transparent 35%),
+        linear-gradient(120deg, #08090e 40%, #11101b);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    animation: enter 0.9s ease both;
+}
+
+.eyebrow {
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(38px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--red);
+    text-shadow: 0 0 35px rgba(255, 53, 94, 0.1);
+}
+
+.hero-description {
+    color: var(--muted);
+    max-width: 430px;
+    font-size: 13px;
+    line-height: 2;
+    margin: 22px 0 30px;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    padding: 15px 21px;
+    background: var(--red);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 1px solid var(--red);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(255, 53, 94, 0.3);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 45px;
+    margin-top: 55px;
+}
+
+.hero-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hero-stats strong {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 23px;
+}
+
+.hero-stats span {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.hero-decoration {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    width: 340px;
+    height: 340px;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-letter {
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.06);
+    font-size: 200px;
+    font-weight: 800;
+    font-family: serif;
+    text-shadow: 0 0 70px rgba(255, 53, 94, 0.15);
+}
+
+.glow-orb {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: rgba(255, 53, 94, 0.18);
+    filter: blur(70px);
+}
+
+.orbit {
+    position: absolute;
+    width: 100%;
+    height: 55%;
+    border: 1px solid rgba(255, 53, 94, 0.25);
+    border-radius: 50%;
+    transform: rotate(-35deg);
+}
+
+.orbit-two {
+    transform: rotate(55deg);
+    border-color: rgba(77, 141, 255, 0.25);
+}
+
+.vertical-text {
+    position: absolute;
+    right: -35px;
+    top: 50%;
+    writing-mode: vertical-rl;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 8px;
+    letter-spacing: 4px;
+}
+
+/* ANIME SECTION */
+
+.anime-section {
+    padding: 100px 7%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.section-heading h2,
+.about-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(25px, 4vw, 38px);
+    line-height: 1.5;
+}
+
+.section-heading h2 span,
+.about-section h2 span {
+    color: var(--red);
+}
+
+.section-description {
+    color: var(--muted);
+    font-size: 11px;
+    padding-bottom: 8px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    padding: 0 17px;
+    margin-bottom: 35px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+}
+
+.search-box:focus-within {
+    border-color: var(--red);
+}
+
+.search-box span {
+    color: var(--red);
+    font-size: 28px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 16px 0;
+    color: white;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 12px;
+}
+
+.search-box input::placeholder {
+    color: #74798a;
+}
+
+/* ANIME CARDS */
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 22px 16px;
+}
+
+.anime-card {
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+    animation: cardEnter 0.7s ease both;
+}
+
+.anime-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 53, 94, 0.65);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+.anime-card[hidden] {
+    display: none;
+}
+
+.anime-art {
+    position: relative;
+    height: 230px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.anime-art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(145deg, #20253a, #0b0d14 65%);
+    transition: transform 0.5s;
+}
+
+.anime-card:hover .anime-art::before {
+    transform: scale(1.1);
+}
+
+.anime-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(8, 9, 14, 0.9), transparent 65%);
+    pointer-events: none;
+}
+
+.art-one-piece::before {
+    background: linear-gradient(145deg, #154f67, #0b1220 65%);
+}
+
+.art-naruto::before {
+    background: linear-gradient(145deg, #8b3a17, #20111a 70%);
+}
+
+.art-jujutsu::before {
+    background: linear-gradient(145deg, #45316d, #111021 70%);
+}
+
+.art-aot::before {
+    background: linear-gradient(145deg, #4b3432, #10151b 70%);
+}
+
+.art-demon::before {
+    background: linear-gradient(145deg, #17655b, #10151b 70%);
+}
+
+.art-death-note::before {
+    background: linear-gradient(145deg, #5a1f35, #100d15 70%);
+}
+
+.art-classroom::before {
+    background: linear-gradient(145deg, #213d66, #0c111d 70%);
+}
+
+.art-dragon::before {
+    background: linear-gradient(145deg, #8a521b, #19110c 70%);
+}
+
+.art-solo::before {
+    background: linear-gradient(145deg, #3b2878, #0b0c17 70%);
+}
+
+.art-bleach::before {
+    background: linear-gradient(145deg, #174b6c, #0b1019 70%);
+}
+
+.card-number {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+}
+
+.art-symbol {
+    color: rgba(255, 255, 255, 0.16);
+    font-family: serif;
+    font-size: clamp(48px, 6vw, 90px);
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s, color 0.4s;
+}
+
+.anime-card:hover .art-symbol {
+    transform: scale(1.12);
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.art-label {
+    position: absolute;
+    z-index: 2;
+    bottom: 14px;
+    left: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 8px;
+    letter-spacing: 1.3px;
+}
+
+.card-info {
+    min-height: 86px;
+    padding: 15px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-info h3 {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.card-arrow {
+    color: var(--red);
+    font-size: 19px;
+    transition: transform 0.3s;
+}
+
+.anime-card:hover .card-arrow {
+    transform: translate(3px, -3px);
+}
+
+.no-results {
+    color: var(--muted);
+    text-align: center;
+    padding: 35px;
+    font-size: 13px;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+    padding: 100px 7%;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background:
+        radial-gradient(ellipse at center, rgba(255, 53, 94, 0.08), transparent 60%),
+        var(--surface);
+}
+
+.about-section > p:not(.eyebrow) {
+    max-width: 520px;
+    margin: 20px auto 28px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 35px 7%;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+footer .copyright {
+    color: #666b7a;
+    font-size: 9px;
+}
+
+/* ANIMATIONS */
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -12px;
+    }
+}
+
+/* TABLETS */
+
+@media (max-width: 1100px) {
+    .anime-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-decoration {
+        right: 2%;
+        opacity: 0.65;
+    }
+
+    .hero-content {
+        max-width: 580px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .navbar {
+        min-height: 68px;
+        padding: 0 5%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .navbar nav {
+        gap: 12px;
+    }
+
+    .navbar nav a {
+        font-size: 10px;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 75px 7%;
+    }
+
+    .hero h1 {
+        font-size: clamp(35px, 10vw, 54px);
+        letter-spacing: -1px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .hero-decoration {
+        width: 230px;
+        height: 230px;
+        right: -65px;
+        top: 68%;
+        opacity: 0.3;
+    }
+
+    .hero-letter {
+        font-size: 150px;
+    }
+
+    .vertical-text {
+        display: none;
+    }
+
+    .hero-stats {
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .hero-stats strong {
+        font-size: 19px;
+    }
+
+    .hero-stats span {
+        font-size: 8px;
+    }
+
+    .anime-section {
+        padding: 65px 5%;
+    }
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .section-heading h2,
+    .about-section h2 {
+        font-size: 25px;
+    }
+
+    .section-description {
+        font-size: 11px;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px 10px;
+    }
+
+    .anime-art {
+        height: 190px;
+    }
+
+    .card-info {
+        min-height: 78px;
+        padding: 12px 9px;
+    }
+
+    .card-info h3 {
+        font-size: 11px;
+    }
+
+    .card-info p {
+        font-size: 8px;
+    }
+
+    .art-label {
+        left: 9px;
+        font-size: 7px;
+        letter-spacing: 0.8px;
+    }
+
+    .about-section {
+        padding: 75px 6%;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
