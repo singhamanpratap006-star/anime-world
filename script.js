@@ -421,3 +421,298 @@ document.addEventListener("DOMContentLoaded", function () {
                     color: "#b5a1ff",
                     abilities: ["Sword Combat", "Armored Defense", "Shadow Soldier Powers"],
                     description: "A powerful knight who becomes one of Jinwoo's most recognizable shadow solders."
+                        },
+                {
+                    name: "Beru",
+                    symbol: "蟻",
+                    color: "#e15a78",
+                    abilities: ["Extreme Speed", "Flight", "Shadow Soldier Powers"],
+                    description: "A formidable shadow soldier known for his overwhelming speed and fierce loyalty."
+                },
+                {
+                    name: "Go Gunhee",
+                    symbol: "會",
+                    color: "#d8bd83",
+                    abilities: ["Combat Experience", "Leadership", "Awakened Strength"],
+                    description: "The respected chairman of Korea's Hunters Association, known for his wisdom and courage."
+                }
+            ]
+        },
+
+        "bleach": {
+            name: "BLEACH",
+            character: "Ichigo Kurosaki",
+            famousFor: "Soul Reapers, spiritual powers, sword battles and powerful transformations.",
+            description: "Ichigo gains Soul Reaper powers and fights to protect humans and the spiritual world.",
+            characters: [
+                {
+                    name: "Ichigo Kurosaki",
+                    symbol: "斬",
+                    color: "#ff783f",
+                    abilities: ["Getsuga Tensho", "Bankai", "Hollow Powers"],
+                    description: "A determined fighter who accepts the responsibility of protecting people from supernatural threats."
+                },
+                {
+                    name: "Rukia Kuchiki",
+                    symbol: "雪",
+                    color: "#a7d8ff",
+                    abilities: ["Sode no Shirayuki", "Shikai", "Bankai"],
+                    description: "A Soul Reaper whose actions introduce Ichigo to the world of spirits and Hollows."
+                },
+                {
+                    name: "Byakuya Kuchiki",
+                    symbol: "桜",
+                    color: "#d8b4fe",
+                    abilities: ["Senbonzakura", "Bankai", "Flash Step"],
+                    description: "A composed captain whose refined swordsmanship controls countless razor-sharp blades."
+                },
+                {
+                    name: "Kenpachi Zaraki",
+                    symbol: "剣",
+                    color: "#e34b4b",
+                    abilities: ["Immense Spiritual Power", "Two-Handed Swordsmanship", "Nozarashi"],
+                    description: "A battle-loving captain who seeks challenging opponents and thrives in combat."
+                },
+                {
+                    name: "Sosuke Aizen",
+                    symbol: "鏡",
+                    color: "#6ca7ff",
+                    abilities: ["Kyoka Suigetsu", "Hypnosis", "Immense Spiritual Power"],
+                    description: "A highly intelligent and manipulative former captain whose plans threaten the Soul Society."
+                }
+            ]
+        }
+
+    };
+
+
+    // ========================================
+    // PART 3: ANIME DETAILS PAGE
+    // ========================================
+
+    const animeTitle = document.getElementById("animeTitle");
+    const mainCharacter = document.getElementById("mainCharacter");
+    const animeFamousFor = document.getElementById("animeFamousFor");
+    const animeDescription = document.getElementById("animeDescription");
+    const exploreCharacters = document.getElementById("exploreCharacters");
+
+    const urlParameters = new URLSearchParams(window.location.search);
+    const animeKey = urlParameters.get("anime");
+
+    if (animeTitle) {
+
+        const anime = animeData[animeKey];
+
+        if (anime) {
+
+            animeTitle.textContent = anime.name;
+            mainCharacter.textContent = anime.character;
+            animeFamousFor.textContent = anime.famousFor;
+            animeDescription.textContent = anime.description;
+
+            if (exploreCharacters) {
+                exploreCharacters.href =
+                    "characters.html?anime=" + encodeURIComponent(animeKey);
+            }
+
+            document.title = anime.name + " | Anime World";
+
+        } else {
+
+            animeTitle.textContent = "ANIME NOT FOUND";
+            mainCharacter.textContent = "No information available.";
+            animeFamousFor.textContent =
+                "Please select an anime from the homepage.";
+            animeDescription.textContent =
+                "Return to the anime list and select an anime to explore its details.";
+
+            if (exploreCharacters) {
+                exploreCharacters.hidden = true;
+            }
+        }
+    }
+
+
+    // ========================================
+    // PART 4: CHARACTER SHOWCASE
+    // ========================================
+
+    const characterAnimeTitle =
+        document.getElementById("characterAnimeTitle");
+
+    const characterName =
+        document.getElementById("characterName");
+
+    const characterSymbol =
+        document.getElementById("characterSymbol");
+
+    const characterArt =
+        document.getElementById("characterArt");
+
+    const characterAbilities =
+        document.getElementById("characterAbilities");
+
+    const characterDescription =
+        document.getElementById("characterDescription");
+
+    const characterNumber =
+        document.getElementById("characterNumber");
+
+    const previousButton =
+        document.getElementById("previousCharacter");
+
+    const nextButton =
+        document.getElementById("nextCharacter");
+
+    const characterDots =
+        document.getElementById("characterDots");
+
+    const backToAnime =
+        document.getElementById("backToAnime");
+
+
+    if (characterName && characterArt) {
+
+        const selectedAnime = animeData[animeKey];
+
+        if (!selectedAnime) {
+
+            characterAnimeTitle.textContent = "SELECT AN ANIME";
+            characterName.textContent = "No Anime Selected";
+            characterSymbol.textContent = "?";
+            characterDescription.textContent =
+                "Return to the homepage and select an anime first.";
+
+            characterAbilities.innerHTML = "";
+            characterNumber.textContent = "00 / 00";
+
+            previousButton.disabled = true;
+            nextButton.disabled = true;
+
+            if (backToAnime) {
+                backToAnime.href = "index.html";
+            }
+
+        } else {
+
+            const characters = selectedAnime.characters;
+            let currentIndex = 0;
+
+            characterAnimeTitle.textContent = selectedAnime.name;
+
+            document.title =
+                selectedAnime.name + " Characters | Anime World";
+
+            if (backToAnime) {
+                backToAnime.href =
+                    "anime.html?anime=" + encodeURIComponent(animeKey);
+            }
+
+
+            // Create navigation dots
+            characterDots.innerHTML = "";
+
+            characters.forEach(function (character, index) {
+
+                const dot = document.createElement("button");
+
+                dot.type = "button";
+                dot.setAttribute(
+                    "aria-label",
+                    "Show " + character.name
+                );
+
+                dot.addEventListener("click", function () {
+                    currentIndex = index;
+                    displayCharacter();
+                });
+
+                characterDots.appendChild(dot);
+            });
+
+
+            // Display selected character
+            function displayCharacter() {
+
+                const character = characters[currentIndex];
+
+                characterName.textContent = character.name;
+                characterSymbol.textContent = character.symbol;
+
+                characterArt.style.setProperty(
+                    "--character-color",
+                    character.color
+                );
+
+                characterDescription.textContent =
+                    character.description;
+
+                characterNumber.textContent =
+                    String(currentIndex + 1).padStart(2, "0") +
+                    " / " +
+                    String(characters.length).padStart(2, "0");
+
+
+                // Display abilities
+                characterAbilities.innerHTML = "";
+
+                character.abilities.forEach(function (ability) {
+
+                    const listItem = document.createElement("li");
+
+                    listItem.textContent = ability;
+
+                    characterAbilities.appendChild(listItem);
+                });
+
+
+                // Update active navigation dot
+                const dots = characterDots.querySelectorAll("button");
+
+                dots.forEach(function (dot, index) {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === currentIndex
+                    );
+
+                    dot.setAttribute(
+                        "aria-current",
+                        index === currentIndex ? "true" : "false"
+                    );
+                });
+
+            }
+
+
+            // Previous character
+            previousButton.addEventListener("click", function () {
+
+                currentIndex =
+                    (currentIndex - 1 + characters.length) %
+                    characters.length;
+
+                displayCharacter();
+            });
+
+
+            // Next character
+            nextButton.addEventListener("click", function () {
+
+                currentIndex =
+                    (currentIndex + 1) % characters.length;
+
+                displayCharacter();
+            });
+
+
+            // Show first character
+            displayCharacter();
+
+        }
+    }
+
+
+    console.log("Anime World is ready!");
+
+});
