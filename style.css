@@ -901,3 +901,459 @@ footer .copyright {
         transition: none;
     }
 }
+/* =========================================
+   ANIME WORLD — CHARACTERS PAGE
+========================================= */
+
+.characters-body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at 50% 30%,
+            rgba(87, 22, 70, 0.18),
+            transparent 60%
+        ),
+        #080810;
+}
+
+.characters-page {
+    max-width: 1400px;
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 65px 5% 80px;
+}
+
+.characters-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.characters-heading h1 {
+    margin: 15px 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(28px, 5vw, 55px);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+    overflow-wrap: anywhere;
+    text-shadow: 0 0 25px rgba(255, 35, 85, 0.25);
+}
+
+.characters-subtitle {
+    max-width: 600px;
+    margin: 15px auto 0;
+    color: #a9a9bb;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Main character showcase */
+
+.character-showcase {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    align-items: center;
+    gap: 18px;
+}
+
+.character-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 45px;
+    min-width: 0;
+}
+
+/* Character visual area */
+
+.character-art {
+    --character-color: #ff3158;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 430px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            color-mix(in srgb, var(--character-color) 28%, transparent),
+            transparent 65%
+        ),
+        linear-gradient(145deg, #171725, #080810 75%);
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.35s ease;
+}
+
+.character-art:hover {
+    border-color: var(--character-color);
+}
+
+.character-aura {
+    position: absolute;
+    z-index: -1;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--character-color);
+    opacity: 0.22;
+    filter: blur(65px);
+    animation: characterAuraPulse 3s ease-in-out infinite alternate;
+}
+
+.character-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 210px;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 110px 110px 35px 35px;
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--character-color) 24%, #181824),
+        rgba(10, 10, 18, 0.95)
+    );
+    box-shadow: 0 0 55px
+        color-mix(in srgb, var(--character-color) 35%, transparent);
+    transition: transform 0.35s ease;
+}
+
+.character-art:hover .character-placeholder {
+    transform: scale(1.04);
+}
+
+.character-placeholder span {
+    font-size: 100px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 25px var(--character-color);
+}
+
+.character-number {
+    position: absolute;
+    bottom: 20px;
+    left: 22px;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* Previous and Next buttons */
+
+.character-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.character-nav:hover {
+    border-color: #ff3158;
+    background: #ff3158;
+    box-shadow: 0 0 25px rgba(255, 49, 88, 0.35);
+    transform: scale(1.08);
+}
+
+.character-nav:focus-visible,
+.character-dots button:focus-visible,
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* Character information */
+
+.character-details {
+    min-width: 0;
+    animation: characterDetailsIn 0.45s ease;
+}
+
+.character-label {
+    margin-bottom: 15px;
+    color: #ff4268;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.character-details h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(27px, 4vw, 44px);
+    font-weight: 900;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.character-details h3 {
+    margin: 28px 0 16px;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.ability-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ability-list li {
+    padding: 10px 13px;
+    border: 1px solid rgba(255, 49, 88, 0.28);
+    border-radius: 6px;
+    background: rgba(255, 49, 88, 0.07);
+    color: #e8e8f0;
+    font-size: 12px;
+    line-height: 1.5;
+    transition: 0.25s ease;
+}
+
+.ability-list li:hover {
+    border-color: #ff4268;
+    background: rgba(255, 49, 88, 0.15);
+}
+
+.character-description {
+    margin-top: 25px;
+    color: #aaaabb;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* Navigation dots */
+
+.character-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 35px 0;
+}
+
+.character-dots button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: #555566;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.character-dots button.active {
+    width: 30px;
+    background: #ff3158;
+    box-shadow: 0 0 12px rgba(255, 49, 88, 0.6);
+}
+
+/* Bottom action buttons */
+
+.character-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.secondary-button {
+    display: inline-block;
+    padding: 15px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.secondary-button:hover {
+    border-color: #ff3158;
+    color: #ff4268;
+}
+
+/* Animations */
+
+@keyframes characterAuraPulse {
+    from {
+        transform: scale(0.85);
+        opacity: 0.14;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 0.28;
+    }
+}
+
+@keyframes characterDetailsIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet layout */
+
+@media (max-width: 900px) {
+    .characters-page {
+        padding: 55px 5% 65px;
+    }
+
+    .character-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .character-art {
+        min-height: 350px;
+    }
+
+    .character-details {
+        padding: 0 8px;
+    }
+
+    .character-showcase {
+        grid-template-columns: 38px minmax(0, 1fr) 38px;
+        gap: 10px;
+    }
+
+    .character-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile layout */
+
+@media (max-width: 500px) {
+    .characters-page {
+        padding: 45px 4% 55px;
+    }
+
+    .characters-heading {
+        margin-bottom: 35px;
+    }
+
+    .characters-subtitle {
+        font-size: 13px;
+    }
+
+    .character-showcase {
+        grid-template-columns: 30px minmax(0, 1fr) 30px;
+        gap: 7px;
+    }
+
+    .character-nav {
+        width: 30px;
+        height: 34px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .character-art {
+        min-height: 280px;
+        border-radius: 12px;
+    }
+
+    .character-placeholder {
+        width: 145px;
+        height: 190px;
+    }
+
+    .character-placeholder span {
+        font-size: 72px;
+    }
+
+    .character-number {
+        bottom: 12px;
+        left: 12px;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .character-details {
+        padding: 0;
+    }
+
+    .character-details h2 {
+        font-size: 26px;
+    }
+
+    .character-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .character-description {
+        font-size: 13px;
+    }
+
+    .ability-list li {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .character-actions {
+        gap: 12px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        padding: 13px 15px;
+        font-size: 11px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .character-aura {
+        animation: none;
+    }
+
+    .character-details {
+        animation: none;
+    }
+
+    .character-art,
+    .character-placeholder,
+    .character-nav,
+    .character-dots button,
+    .ability-list li,
+    .secondary-button {
+        transition: none;
+    }
+}
