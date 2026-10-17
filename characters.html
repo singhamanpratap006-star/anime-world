@@ -1,1 +1,122 @@
-cinematic images
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anime Characters | Anime World</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="characters-body">
+
+    <header class="navbar">
+        <a href="index.html" class="logo">ANIME<span>WORLD</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="anime.html">Anime Details</a>
+        </nav>
+    </header>
+
+    <main class="characters-page">
+
+        <section class="characters-heading">
+            <p class="section-tag">MEET THE LEGENDS</p>
+
+            <h1 id="characterAnimeTitle">ANIME CHARACTERS</h1>
+
+            <p class="characters-subtitle">
+                Discover the warriors. Explore their abilities.
+                Witness their power.
+            </p>
+        </section>
+
+        <section class="character-showcase">
+
+            <button
+                type="button"
+                id="previousCharacter"
+                class="character-nav"
+                aria-label="Previous character">
+                &#10094;
+            </button>
+
+            <div class="character-content">
+
+                <div class="character-art" id="characterArt">
+
+                    <div class="character-aura"></div>
+
+                    <div class="character-placeholder">
+                        <span id="characterSymbol">影</span>
+                    </div>
+
+                    <div class="character-number" id="characterNumber">
+                        01 / 05
+                    </div>
+
+                </div>
+
+                <div class="character-details">
+
+                    <p class="character-label">CHARACTER PROFILE</p>
+
+                    <h2 id="characterName">Loading...</h2>
+
+                    <div class="details-line"></div>
+
+                    <h3>Signature Abilities</h3>
+
+                    <ul id="characterAbilities" class="ability-list">
+                        <li>Loading abilities...</li>
+                    </ul>
+
+                    <p id="characterDescription"
+                       class="character-description"></p>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                id="nextCharacter"
+                class="character-nav"
+                aria-label="Next character">
+                &#10095;
+            </button>
+
+        </section>
+
+        <div class="character-dots"
+             id="characterDots"
+             aria-label="Choose a character">
+        </div>
+
+        <div class="character-actions">
+
+            <a id="backToAnime"
+               href="index.html"
+               class="secondary-button">
+                &#8592; BACK
+            </a>
+
+            <a href="index.html"
+               class="primary-button">
+                EXPLORE MORE ANIME
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>ANIME WORLD — POWER HAS A NAME.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
